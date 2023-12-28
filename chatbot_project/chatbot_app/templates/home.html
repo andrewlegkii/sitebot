@@ -1,0 +1,25 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой сайт-бот</title>
+</head>
+<body>
+    <h1>Добро пожаловать на сайт-бот!</h1>
+    
+    <!-- Форма для отправки запроса -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="user_message" placeholder="Введите ваш вопрос">
+        <button type="submit">Отправить</button>
+    </form>
+    
+    <!-- Отображение ответа от бота -->
+    {% if bot_response %}
+        <div>
+            <p>Ответ от бота:</p>
+            <p>{{ bot_response }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
