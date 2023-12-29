@@ -1,6 +1,7 @@
 # chatbot_app/views.py
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
 from dotenv import load_dotenv
 import requests
 import json

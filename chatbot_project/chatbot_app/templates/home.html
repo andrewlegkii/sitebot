@@ -8,7 +8,7 @@
     <h1>Добро пожаловать на сайт-бот!</h1>
     
     <!-- Форма для отправки запроса -->
-    <form method="post">
+    <form method="post" action="{% url 'home' %}"> <!-- Укажите корректный URL вашего представления -->
         {% csrf_token %}
         <input type="text" name="user_message" placeholder="Введите ваш вопрос">
         <button type="submit">Отправить</button>
