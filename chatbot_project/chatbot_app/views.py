@@ -1,9 +1,15 @@
 # chatbot_app/views.py
 from django.shortcuts import render
 from django.http import JsonResponse
+from dotenv import load_dotenv
 import requests
 import json
 import os
+
+load_dotenv()
+
+MODE_URI = os.getenv('MODE_URI')
+API_KEY = os.getenv('API_KEY')
 
 
 def home(request):
@@ -13,7 +19,7 @@ def home(request):
         user_message = request.POST.get('user_message')
 
         prompt = {
-            "modelUri": "gpt://b1gevpns458a0bh39eo3/yandexgpt-lite",
+            "modelUri": MODE_URI,
             "completionOptions": {
                 "stream": False,
                 "temperature": 0.6,
@@ -34,7 +40,7 @@ def home(request):
         url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
         headers = {
             "Content-Type": "application/json",
-            "Authorization": f"Api-Key AQVN0pevSYxOLiNpGizMmjdp0fzM9UCjSaKubhRm"
+            "Authorization": f"Api-Key {API_KEY}"
         }
 
         response = requests.post(url, headers=headers, json=prompt)
